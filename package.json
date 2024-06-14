@@ -4,7 +4,7 @@
   "description": "",
   "main": "main.js",
   "scripts": {
-    "generate": "rm -rf public && mkdir public && node scraper.js"
+    "generate": "rm -rf public && mkdir public && node scraper.js && cp .htaccess public/"
   },
   "keywords": [],
   "author": "",
