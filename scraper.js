@@ -109,6 +109,12 @@ async function filterLines(lines, filterList) {
 async function scrapOneLine(lineName) {
   if (lineName == "vivo!") {
     lineName = "87B";
+  } else if (lineName == '8A') {
+    lineName = '8';
+  } else if(lineName == '99z') {
+    lineName = '99Z';
+  } else if(lineName == '99d') {
+    lineName = '99D';
   }
   return Promise.all([
     loadPage(csvBaseUrl + lineName + "_lv.csv")
