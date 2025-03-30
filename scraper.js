@@ -8,6 +8,8 @@ const liniiMetropolitaneUrl =
   "https://ctpcj.ro/index.php/ro/orare-linii/linii-metropolitane";
 const liniiSuperMarketUrl =
   "https://ctpcj.ro/index.php/ro/orare-linii/linii-supermarket";
+const liniiNoapteUrl=
+    "https://ctpcj.ro/index.php/ro/orare-linii/transport-noapte";
 const csvBaseUrl = "https://ctpcj.ro/orare/csv/orar_";
 const jsonFileBasic = "public/buses_basic.json";
 const jsonFileDetail = "public/buses_detail.json";
@@ -140,7 +142,7 @@ async function scrapOneLine(lineName) {
 async function scrapAll() {
   let scraperResponse;
 
-  const [urbane, metropolitane, market] = await Promise.all([
+  const [urbane, metropolitane, market, noapte] = await Promise.all([
     loadPage(liniiUrbaneUrl)
       .then((html) => scrap(html.body))
       .catch((e) => console.error(e)),
@@ -150,13 +152,16 @@ async function scrapAll() {
     loadPage(liniiSuperMarketUrl)
       .then((html) => scrap(html.body))
       .catch((e) => console.error(e)),
+      loadPage(liniiNoapteUrl)
+      .then((html) => scrap(html.body))
+      .catch((e) => console.error(e)),
   ]);
 
   market.map((line) => {
     line.name = line.name.toLowerCase();
   });
 
-  scraperResponse = { urbane, metropolitane, market };
+  scraperResponse = { urbane, metropolitane, market, noapte };
 
   jsonfile.writeFile(jsonFileBasic, scraperResponse);
 
