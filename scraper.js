@@ -9,7 +9,7 @@ const liniiMetropolitaneUrl =
 const liniiSuperMarketUrl =
   "https://ctpcj.ro/index.php/ro/orare-linii/linii-supermarket";
 const liniiNoapteUrl=
-    "https://ctpcj.ro/index.php/ro/orare-linii/transport-noapte";
+    "https://ctpcj.ro/index.php/ro/orare-linii/transport-noapte-urban";
 const csvBaseUrl = "https://ctpcj.ro/orare/csv/orar_";
 const jsonFileBasic = "public/buses_basic.json";
 const jsonFileDetail = "public/buses_detail.json";
